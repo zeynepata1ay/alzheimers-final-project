@@ -5,33 +5,37 @@ import base64
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.preprocessing import LabelEncoder
 
+# Load data
 df_raw = pd.read_csv('alzheimers_prediction_dataset.csv')
-#df_raw = df_raw[df_raw['Country'] == 'USA']
-df_raw = df_raw[df_raw['Age'] >= 78]  # Filter for Age >= 75
+
+# Optional: reduce size for faster testing
+# df_raw = df_raw[df_raw['Age'] >= 78].sample(n=3000, random_state=42)
+df_raw = df_raw[df_raw['Age'] >= 78]  # Focus on high-risk group
 
 x_feat_list = [
-    'Age',                            # Numerical
-    'Gender',                         # Categorical (e.g., Male/Female)
-    'Education Level',                # Numerical
-    'BMI',                            # Numerical
-    'Physical Activity Level',        # Categorical (e.g., Low/Medium/High)
-    'Smoking Status',                 # Categorical (e.g., Yes/No/Former)
-    'Alcohol Consumption',            # Categorical (e.g., Low/Medium/High)
-    'Diabetes',                       # Categorical (Yes/No)
-    'Family History of Alzheimer’s',  # Categorical (Yes/No)
-    'Depression Level',               # Categorical (e.g., Low/Medium/High)
-    'Sleep Quality',                  # Categorical (e.g., Poor/Fair/Good)
-    'Dietary Habits',                 # Categorical (e.g., Poor/Fair/Good)
-    'Air Pollution Exposure',         # Categorical (e.g., Low/Medium/High)
-    'Employment Status',              # Categorical (e.g., Employed/Unemployed/Retired)
-    'Marital Status',                 # Categorical (e.g., Single/Married/Divorced)
-    'Genetic Risk Factor (APOE-ε4 allele)',  # Categorical (Yes/No)
-    'Social Engagement Level',        # Categorical (e.g., Low/Medium/High)
-    'Income Level',                   # Categorical (e.g., Low/Medium/High)
+    'Age',
+    'Gender',
+    'Education Level',
+    'BMI',
+    'Physical Activity Level',
+    'Smoking Status',
+    'Alcohol Consumption',
+    'Diabetes',
+    'Family History of Alzheimer’s',
+    'Depression Level',
+    'Sleep Quality',
+    'Dietary Habits',
+    'Air Pollution Exposure',
+    'Employment Status',
+    'Marital Status',
+    'Genetic Risk Factor (APOE-ε4 allele)',
+    'Social Engagement Level',
+    'Income Level',
 ]
 
 x_df = df_raw.loc[:, x_feat_list]
 
+# Encode categorical features
 mapping_dict = {
     'Gender': {'Male': 0, 'Female': 1},
     'Physical Activity Level': {'Low': 0, 'Medium': 1, 'High': 2},
@@ -57,43 +61,46 @@ for col, mapping in mapping_dict.items():
 
 x = x_df.values
 
-target_df = df_raw[['Alzheimer’s Diagnosis']]
+# Encode the target variable
 target_mapping = {'No': 0, 'Yes': 1}
-target_df['Alzheimer’s Diagnosis'] = target_df['Alzheimer’s Diagnosis'].map(target_mapping).fillna(-1)
-
+df_raw['Alzheimer’s Diagnosis'] = df_raw['Alzheimer’s Diagnosis'].map(target_mapping).fillna(-1)
 y = df_raw['Alzheimer’s Diagnosis']
+
 if y.dtype == 'object':
     le = LabelEncoder()
     y = le.fit_transform(y)
 
-rfr = RandomForestRegressor()
+# Train RandomForest (optimized for performance)
+rfr = RandomForestRegressor(n_estimators=50, random_state=42, n_jobs=-1)
 rfr.fit(x, y)
 
-# Modified plot_feat_import function with annotations
+# Plot function
 def plot_feat_import(feat_list, feat_import, sort=True, limit=None):
     if sort:
-        # Sort in descending order so most important features are first
         idx = np.argsort(feat_import)[::-1]
         feat_list = [feat_list[_idx] for _idx in idx]
         feat_import = feat_import[idx]
 
     if limit is not None:
-        # Take the top 'limit' features (most important due to descending sort)
         feat_list = feat_list[:limit]
         feat_import = feat_import[:limit]
 
     plt.figure(figsize=(8, 6))
     plt.barh(feat_list, feat_import)
-    plt.gca().invert_yaxis()  # Invert y-axis to place most important at top
+    plt.gca().invert_yaxis()
     plt.xlabel('Feature Importance (Mean MSE Reduction)')
-    plt.title('RandomForestRegressor Alzheimers Features Compared')
+    plt.title("RandomForestRegressor Alzheimer's Predictors")
 
-    # Add annotations for each bar
     max_import = max(feat_import)
-    offset = 0.05 * max_import  # Small offset proportional to max importance
+    offset = 0.05 * max_import
     for i, (feature, importance) in enumerate(zip(feat_list, feat_import)):
         plt.text(importance + offset, i, f"{importance:.4f}", va='center', fontsize=8)
 
     plt.tight_layout()
     plt.savefig('feature_importance.png')
     return plt
+
+plt_obj = plot_feat_import(x_feat_list, rfr.feature_importances_)
+
+with open('feature_importance.png', 'rb') as image_file:
+    encoded_image = base64.b64encode(image_file.read()).decode()

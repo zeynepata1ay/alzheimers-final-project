@@ -37,4 +37,4 @@ plt.ylabel('Correlation with Alzheimer’s Diagnosis')
 plt.xticks(rotation=45, ha='right')  # Rotate x-axis labels for readability
 plt.grid(True, axis='y', alpha=0.3)  # Add horizontal grid lines
 plt.tight_layout()  # Adjust layout to prevent label cutoff
-plt.show()
+plt.savefig('correlation_plot.png', dpi=300)

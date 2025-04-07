@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.20.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-7c7500be115ed9f6265b2f43cde59d6d"}, "mark": {"type": "bar"}, "encoding": {"color": {"field": "Family History", "scale": {"domain": ["Yes", "No"], "range": ["#c39bd3", "#7f8c8d"]}, "type": "nominal"}, "tooltip": [{"field": "Alzheimer\u2019s Diagnosis", "type": "nominal"}, {"field": "Family History", "type": "nominal"}, {"field": "Count", "type": "quantitative"}], "x": {"field": "Alzheimer\u2019s Diagnosis", "title": "Alzheimer\u2019s Diagnosis", "type": "nominal"}, "y": {"field": "Count", "stack": "normalize", "title": "Percentage", "type": "quantitative"}}, "height": 300, "params": [{"name": "param_1", "select": {"type": "interval", "encodings": ["x", "y"]}, "bind": "scales"}], "title": "Family History by Alzheimer\u2019s Diagnosis (78+ Years Old)", "width": 400, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-7c7500be115ed9f6265b2f43cde59d6d": [{"Alzheimer\u2019s Diagnosis": "Yes", "Family History": "No", "Count": 12025}, {"Alzheimer\u2019s Diagnosis": "No", "Family History": "No", "Count": 7619}, {"Alzheimer\u2019s Diagnosis": "Yes", "Family History": "Yes", "Count": 6461}, {"Alzheimer\u2019s Diagnosis": "No", "Family History": "Yes", "Count": 1878}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>

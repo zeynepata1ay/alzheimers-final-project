@@ -1,0 +1,26 @@
+import pandas as pd
+import altair as alt
+
+# Load and filter data
+df = pd.read_csv("alzheimers_prediction_dataset.csv")
+df_78plus = df[df["Age"] >= 78]
+
+# Prepare the subset
+subset = df_78plus[["Alzheimer’s Diagnosis", "Genetic Risk Factor (APOE-ε4 allele)"]].copy()
+counts = subset.value_counts().reset_index(name="Count")
+counts.columns = ["Alzheimer’s Diagnosis", "Genetic Risk Factor", "Count"]
+
+# Create Altair chart
+chart = alt.Chart(counts).mark_bar().encode(
+    x=alt.X("Alzheimer’s Diagnosis", title="Alzheimer’s Diagnosis"),
+    y=alt.Y("Count", stack='normalize', title="Percentage"),
+    color=alt.Color("Genetic Risk Factor", scale=alt.Scale(domain=["Yes", "No"], range=["#d35400", "#f7dc6f"])),
+    tooltip=["Alzheimer’s Diagnosis", "Genetic Risk Factor", "Count"]
+).properties(
+    width=400,
+    height=300,
+    title="Genetic Risk Factor by Alzheimer’s Diagnosis (78+ Years Old)"
+).interactive()
+
+# Save as HTML
+chart.save("genetic_risk_chart.html")
