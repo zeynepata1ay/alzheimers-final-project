@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Global Insights Into Alzheimer’s Risk Factors</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="container">
+  <h1>Global Insights Into Alzheimer’s Risk Factors</h1>
+
+  <div class="lightbox">
+    <h2>INTRODUCTION</h2>
+    <p>Alzheimer's disease is a progressive neurodegenerative disorder leading to severe cognitive decline and loss of independence. Symptoms include severe memory loss, poor planning, and loss of physical control. It is unfortunately quite common. Affecting 6.9 million Americans, its prevalence is rising, potentially due to controllable environmental factors (NIH Alzheimers and Environmental Factors). Further, recent scientific discoveries have shown our previous theory of Alzheimer's, the amyloid cascade hypothesis, is incorrect. And in the literature, the specific cause of Alzheimer's is still poorly understood. Highly efficacious Alzheimer's medications remain to be seen. However, it may be possible to reduce the odds of developing the disease via lifestyle changes. For our project, we examined biological features from our dataset such as age, Body Mass Index (BMI), the Genetic Risk Factor (APOE-ε4 allele). We also looked at environmental factors including physical activity, smoker status, and sleep quality to evaluate if the disease was predominantly affected by nature or nurture. After combining all these factors, we sought to provide actionable recommendations for preventing Alzheimer’s disease.</p>
+  </div>
+
+  <div class="lightbox">
+    <h2>DATA</h2>
+    <p>The dataset chosen for this project is the “Alzheimer’s Prediction Dataset (Global)” sourced from Kaggle. This dataset is comprehensive, containing 74,283 records collected from 20 countries. It offers valuable insights into Alzheimer’s disease risk factors, including demographic, lifestyle, medical, and genetic variables. The dataset reflects real-world disparities across regions by incorporating a biased distribution, so conclusions about risk factors may be less applicable to countries less represented. It includes more than 2,000 observations and over 10 features, with a mix of categorical and continuous attributes. These characteristics enabled diverse analyses and visualizations, allowing our group to explore factors and present findings effectively. </p>
+    <p>
+      <a href="https://www.kaggle.com/datasets/ankushpanday1/alzheimers-prediction-dataset-global" target="_blank">
+        ➤ View Dataset on Kaggle
+      </a>
+    </p>
+  </div>
+
+  <div class="lightbox">
+    <h2>REFERENCES</h2>
+    <ul>
+      <li>
+        <a href="https://www-nature-com.ezproxy.neu.edu/articles/s41572-021-00269-y" target="_blank">
+          Alzheimer disease – Nature Reviews Disease Primers
+        </a>
+      </li>
+      <li>
+        <a href="https://www-sciencedirect-com.ezproxy.neu.edu/science/article/pii/S1053811921004201" target="_blank">
+          Deep recurrent model for individualized prediction of Alzheimer’s disease progression
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="lightbox">
+    <h2>INTERACTIVE VISUALIZATIONS</h2>
+    <div class="button-container">
+      <button onclick="loadViz('interactive_chart.html', 'D3/Plotly Interactive Visualization')">D3/Plotly Interactive Chart</button>
+      <button onclick="loadViz('feature_importance.png', 'Feature Importance from Random Forest')">Feature Importance (RandomForestRegressor)</button>
+      <button onclick="loadViz('correlation_plot.png', 'Correlation Between Features')">Correlation Between Features</button>
+      <button onclick="loadViz('age_density_plot.png', 'Age Distribution by Alzheimer’s Diagnosis')">Age Density Plot</button>
+      <button onclick="loadViz('family_history_chart.html', 'Family History (Interactive)')">Family History (Interactive)</button>
+      <button onclick="loadViz('genetic_risk_chart.html', 'Genetic Risk Factor (Interactive)')">Genetic Risk Factor (Interactive)</button>
+    </div>
+  </div>
+
+  <div class="viz-container">
+    <h2 id="viz-title">Visualization will appear here</h2>
+    <div id="viz-content"></div>
+    <div id="viz-description" class="lightbox"></div>
+  </div>
+
+  <!-- Hidden design explanation bank -->
+  <div id="design-explanations" style="display: none;">
+    <div id="desc-interactive_chart.html">
+      <p><strong>Interactive Feature Importance:</strong> Interactive Feature Importance: The interactive element allows users to group RFR feature importance values and answer basic questions about Alzheimer's predicting. Conveniently this combines 3 visualizations into one. The three questions are “Nature vs. Nurture” , “Importance of a Healthy Body”,  and “Impact of Life Choices”. Hovering over the bars shows which variables were grouped  for a total. It shows the breadth of impact personal everyday choices have on preventable alzheimers. 
+    </div>
+    <div id="desc-feature_importance.png">
+      <p><strong>Random Forest Regressor Explanation:</strong> This feature importance graph for predicting Alzheimer's disease. Clear predictors include BMI, Education Level and Age. BMI has the highest factor significantly and explains the data more so than socialization, employment status, depression level, sleep quality, alcohol consumption etc. BMI or body mass index is a measure of weight to height ratio. Commonly it is used to classify if people are overweight. (It's not an ideal measure because it does not differentiate muscle and fat tissue.) Those that consistently eat in a surplus can damage their metabolic and insulin response. Here, a  study supports insulin resistance with down steam effects resulting in neurodegeneration. In simplifying insulin resistance leads to neurotoxic plaques (beta-amyloid) and reduced glucose uptake by neurons. Reduced glucose uptake is insulin resistance which leads to reduced Mitochondrial ATP output. New neural connections are prevented by the inability to maintain microtubules. Insulin resistance causes increased activity from kinases  GSK-3β which Hyperphosphorylate tau protein, this is a key building block of microtubules. Microtubules, as a basis,  form neurites (new brain connections)  and axons (extensions/connections of brain). We stress that maintaining a healthy body weight is important. And sugar is extensively linked to insulin spikes.  To some extent a modern diet is taxing on the brain. We’ve already talked about age. Beyond the 78 year old cutoff, risk of Alzheimers continues to increase up to 100s and beyond. Education level is supported by the scientific literature on the “Cognitive Reserve Theory”. Cognitive Reserve theory states that using your brain and learning makes your brain more resistant to the degrading effects of dementia. Dementia for more educated people may appear out of nowhere and with increased severity. Being a lifelong learner may prolong healthy executive functioning. 
+    </div>
+    <div id="desc-correlation_plot.png">
+      <p><strong>Correlation Values Explanation:</strong> This graph shows the linear correlation values calculated for our target variable “Alzheimer's Diagnosis”. We note “Family History of Alzheimer’s” and the genetic risk factor “APOE-e4 allele” are clear predictors while the rest have no clear linear relationship to Alzheimer's diagnosis including age, BMI, and Education Level. Despite being known in the scientific literature to be linked factors.</p>
+    </div>
+    <div id="desc-age_density_plot.png">
+      <p><strong>Density Plot Design:</strong> Density plot design: A density plot was used for this in order to clearly view the age differences of the groups with positive or negative Alzheimer’s diagnoses; it was useful to be able to overlay the two groups. The format also allowed us to see if the data was skewed towards different sides. As seen in the graph, the “No” group skews towards younger ages, while the “Yes” group skews towards older folks. Density plots depict smooth curves in the graph, which are visually appealing.
+
+        Family history design: A stacked bar plot was used to show the comparison between the groups of people with positive and negative Alzheimer’s diagnoses. The stacked design allowed us to easily view the proportions of each diagnosis group of those with and without a family history of the disease. Since the bars were set to the same height, comparisons for the proportions could easily be determined. This design also uses space efficiently, using two columns whereas a standard bar plot would use four. 
+        
+        Genetic risk design: A stacked bar plot was used to show the comparison between the groups of people with positive and negative Alzheimer’s diagnosis. The stacked design allowed us to easily view the proportions of each diagnosis group of those who were and were not genetically predisposed to the disease. Since the bars were set to the same height, comparisons for the proportions could easily be determined. This design also uses space efficiently, using two columns whereas a standard bar plot would use four. 
+        
+        Alzheimer's Correlation design: A bar plot was used to further simplify the correlation matrix for Alzheimer’s diagnosis. The bar chart allows us to tangibly compare small differences (correlations of 0.1-0.18) of the matrix. Including all the variables shows a lack of simple correlation for most variables. 
+        
+    </div>
+    <div id="desc-family_history_chart.html">
+      <p><strong>Family History Design:</strong> This plot shows the percentage of those aged 78 and older who have a family history of Alzheimer's Disease, separated by Alzheimer's diagnosis. 20% of the population that is not affected by Alzheimer's (1878 people) have a family history of the disease. 35% of the population that is affected by Alzheimer's (6461 people) have a family history of the disease. Out of those who have a positive Alzheimer's diagnosis, there is a noticeably higher proportion of people who have a family history of the disease compared to those who have a negative Alzheimer's diagnosis.
+
+        The interactive feature of this plot allows users to adjust the lengths of each of the bars. This feature ensured that the correct percentages of those who had a family history of the disease were noted. The hover-over menu, or tooltip, provides the exact counts of those who do and do not have a family history of Alzheimer's Disease, which is not clearly seen in the graph.
+    </div>
+    <div id="desc-genetic_risk_chart.html">
+      <p><strong>Genetic Risk Design:</strong> This plot shows the percentage of those aged 78 and older who have the APOE-ε4 allele, which gives them a higher genetic risk of Alzheimer's Disease, separated by Alzheimer's diagnosis. Around 9% of the population that is not affected by Alzheimer's (865 people) have the allele. Around 26% of the population that is affected by Alzheimer's (4765 people) have the allele. Out of those who have a positive Alzheimer's diagnosis, there is a noticeably higher proportion of people who have the APOE-ε4 allele compared to those who have a negative Alzheimer's diagnosis. This means that having this genetic risk factor can predispose someone to an Alzheimer's diagnosis.
+
+        The interactive feature of this plot allows users to adjust the lengths of each of the bars. This feature helps determine the exact percentages of the populations with the genetic risk factor; otherwise, it would be assumed that the percentages were 10% and 25% instead of 9% and 26%. The hover-over menu, or tooltip, provides the exact counts of those who do and do not have the APOE-ε4 allele, which is not clearly seen in the graph.
+    </div>
+  </div>
+
+  <div class="lightbox">
+    <h2>SUMMARY & FINDINGS</h2>
+    <p>In this project, we sought to determine which factors played the greatest role in predicting Alzheimer’s Disease diagnoses. As this is a disease affecting millions of people, we believe it's important to provide actionable advice for the prevention of Alzheimer’s. 
+      The density plot showing the age distribution of those with positive or negative diagnoses told us that after around age 78, the number of people with Alzheimer’s outnumbers those without the disease. Our histogram showed us that after age 78, having a family history of Alzheimer’s and the APOE-ε4 allele were two of the most prevalent factors in Alzheimer’s predictions, so we examined these factors closely. 
+      Along with biological factors which are out of patients’ control, we also looked into the impacts of lifestyle habits in relation to Alzheimer’s diagnoses. In terms of nature vs. nurture, it was found that the factors of nature, such as a patient’s age, their genetic risk factor, or family history of Alzheimer’s, had a 22.82% influence on predicting a positive Alzheimer’s diagnosis. Factors of nurture, such as one’s physical activity level, sleep quality, and social engagement level, had a 77.18% influence. Regarding life choices, a patient’s physical activity level, smoking status, alcohol consumption level, dietary habits, social engagement level, BMI, and education level had the greatest role in predicting a positive Alzheimer’s diagnosis with a 52.20% influence rate. 
+      </p>
+  </div>
+</div>
+
+<script>
+  function loadViz(file, title) {
+    document.getElementById('viz-title').innerText = title;
+    const ext = file.split('.').pop();
+    const vizContainer = document.getElementById('viz-content');
+    const descContainer = document.getElementById('viz-description');
+
+    if (ext === 'html') {
+      vizContainer.innerHTML = `<iframe src="${file}" width="100%" height="500px" style="border:none;"></iframe>`;
+    } else if (['png', 'jpg', 'jpeg'].includes(ext)) {
+      vizContainer.innerHTML = `<img src="${file}" alt="${title}" style="width:100%; max-width:900px;" />`;
+    } else {
+      vizContainer.innerHTML = '<p>Unsupported file type</p>';
+    }
+
+    const explanationDiv = document.getElementById(`desc-${file}`);
+    descContainer.innerHTML = explanationDiv ? explanationDiv.innerHTML : "";
+  }
+</script>
+
+</body>
+</html>
