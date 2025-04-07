@@ -12,7 +12,8 @@
 
   <div class="lightbox">
     <h2>INTRODUCTION</h2>
-    <p>Alzheimer's disease is a progressive neurodegenerative disorder leading to severe cognitive decline and loss of independence. Symptoms include severe memory loss, poor planning, and loss of physical control. It is unfortunately quite common. Affecting 6.9 million Americans, its prevalence is rising, potentially due to controllable environmental factors (NIH Alzheimers and Environmental Factors). Further, recent scientific discoveries have shown our previous theory of Alzheimer's, the amyloid cascade hypothesis, is incorrect. And in the literature, the specific cause of Alzheimer's is still poorly understood. Highly efficacious Alzheimer's medications remain to be seen. However, it may be possible to reduce the odds of developing the disease via lifestyle changes. For our project, we examined biological features from our dataset such as age, Body Mass Index (BMI), the Genetic Risk Factor (APOE-ε4 allele). We also looked at environmental factors including physical activity, smoker status, and sleep quality to evaluate if the disease was predominantly affected by nature or nurture. After combining all these factors, we sought to provide actionable recommendations for preventing Alzheimer’s disease.</p>
+    <p>Alzheimer's disease is a progressive neurodegenerative disorder leading to severe cognitive decline and loss of independence. Symptoms include severe memory loss, poor planning, and loss of physical control. It is unfortunately quite common. Affecting 6.9 million Americans, its prevalence is rising, potentially due to controllable environmental factors (NIH Alzheimers and Environmental Factors). Further, recent scientific discoveries have shown our previous theory of Alzheimer's, the amyloid cascade hypothesis, is incorrect. And in the literature, the specific cause of Alzheimer's is still poorly understood. Highly efficacious Alzheimer's medications remain to be seen. However, it may be possible to reduce the odds of developing the disease via lifestyle changes. For our project, we examined biological features from our dataset such as age, Body Mass Index (BMI), the Genetic Risk Factor (APOE-ε4 allele). We also looked at environmental factors including physical activity, smoker status, and sleep quality to evaluate if the disease was predominantly affected by nature or nurture. After combining all these factors, we sought to provide actionable recommendations for preventing Alzheimer’s disease.
+    </p>
   </div>
 
   <div class="lightbox">
@@ -31,15 +32,24 @@
       <li>
         <a href="https://www-nature-com.ezproxy.neu.edu/articles/s41572-021-00269-y" target="_blank">
           Alzheimer disease – Nature Reviews Disease Primers
-        </a>
+        </a><br />
+        <em>This article is a general overview on Alzheimer’s disease, including information on the disease’s biological basis, diagnoses, and treatments.</em>
       </li>
       <li>
         <a href="https://www-sciencedirect-com.ezproxy.neu.edu/science/article/pii/S1053811921004201" target="_blank">
           Deep recurrent model for individualized prediction of Alzheimer’s disease progression
-        </a>
+        </a><br />
+        <em>This article discusses a model which researchers created that predicts Alzheimer’s disease progression for individuals.</em>
+      </li>
+      <li>
+        <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7246646/" target="_blank">
+          Insulin Resistance and Alzheimer’s: A Link to Type III Diabetes (PMC Article)
+        </a><br />
+        <em>This article links insulin resistance and type III diabetes to dementia symptoms through beta-amyloid plaque and tau protein hyperphosphorylation, all contributing to neuronal dysfunction.</em>
       </li>
     </ul>
   </div>
+  
 
   <div class="lightbox">
     <h2>INTERACTIVE VISUALIZATIONS</h2>
@@ -71,32 +81,28 @@
       <p><strong>Correlation Values Explanation:</strong> This graph shows the linear correlation values calculated for our target variable “Alzheimer's Diagnosis”. We note “Family History of Alzheimer’s” and the genetic risk factor “APOE-e4 allele” are clear predictors while the rest have no clear linear relationship to Alzheimer's diagnosis including age, BMI, and Education Level. Despite being known in the scientific literature to be linked factors.</p>
     </div>
     <div id="desc-age_density_plot.png">
-      <p><strong>Density Plot Design:</strong> Density plot design: A density plot was used for this in order to clearly view the age differences of the groups with positive or negative Alzheimer’s diagnoses; it was useful to be able to overlay the two groups. The format also allowed us to see if the data was skewed towards different sides. As seen in the graph, the “No” group skews towards younger ages, while the “Yes” group skews towards older folks. Density plots depict smooth curves in the graph, which are visually appealing.
-
-        Family history design: A stacked bar plot was used to show the comparison between the groups of people with positive and negative Alzheimer’s diagnoses. The stacked design allowed us to easily view the proportions of each diagnosis group of those with and without a family history of the disease. Since the bars were set to the same height, comparisons for the proportions could easily be determined. This design also uses space efficiently, using two columns whereas a standard bar plot would use four. 
-        
-        Genetic risk design: A stacked bar plot was used to show the comparison between the groups of people with positive and negative Alzheimer’s diagnosis. The stacked design allowed us to easily view the proportions of each diagnosis group of those who were and were not genetically predisposed to the disease. Since the bars were set to the same height, comparisons for the proportions could easily be determined. This design also uses space efficiently, using two columns whereas a standard bar plot would use four. 
-        
-        Alzheimer's Correlation design: A bar plot was used to further simplify the correlation matrix for Alzheimer’s diagnosis. The bar chart allows us to tangibly compare small differences (correlations of 0.1-0.18) of the matrix. Including all the variables shows a lack of simple correlation for most variables. 
+      <p><strong>Density Plot Design:</strong> This is a density plot showing the age distribution for Alzheimer's diagnosis statuses. For those without an Alzheimer's diagnosis, the data is positively skewed, with ages 50-65 having the highest rates of negative diagnoses. For those with an Alzheimer's diagnosis, the data is negatively skewed, with ages 80-95 having the highest rates of positive diagnoses. Negative diagnoses tend to sharply drop between the ages of 63-65, 74-78, and 93-97. Positive diagnoses rapidly increase between the ages of 45-50, 64-67, and 74-80. At age 78, the rate of those affected by Alzheimer's becomes greater than the rate of those who are not affected. There are no noticeable potential outliers in this graph. 
         
     </div>
     <div id="desc-family_history_chart.html">
       <p><strong>Family History Design:</strong> This plot shows the percentage of those aged 78 and older who have a family history of Alzheimer's Disease, separated by Alzheimer's diagnosis. 20% of the population that is not affected by Alzheimer's (1878 people) have a family history of the disease. 35% of the population that is affected by Alzheimer's (6461 people) have a family history of the disease. Out of those who have a positive Alzheimer's diagnosis, there is a noticeably higher proportion of people who have a family history of the disease compared to those who have a negative Alzheimer's diagnosis.
 
-        The interactive feature of this plot allows users to adjust the lengths of each of the bars. This feature ensured that the correct percentages of those who had a family history of the disease were noted. The hover-over menu, or tooltip, provides the exact counts of those who do and do not have a family history of Alzheimer's Disease, which is not clearly seen in the graph.
+        The interactive feature of this plot allows users to adjust the lengths of each of the bars. This feature ensured that the correct percentages of those who had a family history of the disease were noted. The hover-over menu, or tooltip, provides the exact counts of those who do and do not have a family history of Alzheimer's Disease, which is not clearly seen in the graph.        
     </div>
     <div id="desc-genetic_risk_chart.html">
       <p><strong>Genetic Risk Design:</strong> This plot shows the percentage of those aged 78 and older who have the APOE-ε4 allele, which gives them a higher genetic risk of Alzheimer's Disease, separated by Alzheimer's diagnosis. Around 9% of the population that is not affected by Alzheimer's (865 people) have the allele. Around 26% of the population that is affected by Alzheimer's (4765 people) have the allele. Out of those who have a positive Alzheimer's diagnosis, there is a noticeably higher proportion of people who have the APOE-ε4 allele compared to those who have a negative Alzheimer's diagnosis. This means that having this genetic risk factor can predispose someone to an Alzheimer's diagnosis.
 
-        The interactive feature of this plot allows users to adjust the lengths of each of the bars. This feature helps determine the exact percentages of the populations with the genetic risk factor; otherwise, it would be assumed that the percentages were 10% and 25% instead of 9% and 26%. The hover-over menu, or tooltip, provides the exact counts of those who do and do not have the APOE-ε4 allele, which is not clearly seen in the graph.
+        The interactive feature of this plot allows users to adjust the lengths of each of the bars. This feature helps determine the exact percentages of the populations with the genetic risk factor; otherwise, it would be assumed that the percentages were 10% and 25% instead of 9% and 26%. The hover-over menu, or tooltip, provides the exact counts of those who do and do not have the APOE-ε4 allele, which is not clearly seen in the graph.        
     </div>
   </div>
 
   <div class="lightbox">
     <h2>SUMMARY & FINDINGS</h2>
-    <p>In this project, we sought to determine which factors played the greatest role in predicting Alzheimer’s Disease diagnoses. As this is a disease affecting millions of people, we believe it's important to provide actionable advice for the prevention of Alzheimer’s. 
-      The density plot showing the age distribution of those with positive or negative diagnoses told us that after around age 78, the number of people with Alzheimer’s outnumbers those without the disease. Our histogram showed us that after age 78, having a family history of Alzheimer’s and the APOE-ε4 allele were two of the most prevalent factors in Alzheimer’s predictions, so we examined these factors closely. 
-      Along with biological factors which are out of patients’ control, we also looked into the impacts of lifestyle habits in relation to Alzheimer’s diagnoses. In terms of nature vs. nurture, it was found that the factors of nature, such as a patient’s age, their genetic risk factor, or family history of Alzheimer’s, had a 22.82% influence on predicting a positive Alzheimer’s diagnosis. Factors of nurture, such as one’s physical activity level, sleep quality, and social engagement level, had a 77.18% influence. Regarding life choices, a patient’s physical activity level, smoking status, alcohol consumption level, dietary habits, social engagement level, BMI, and education level had the greatest role in predicting a positive Alzheimer’s diagnosis with a 52.20% influence rate. 
+    <p>In this project, we sought to answer which factors played the greatest role in predicting Alzheimer’s Disease diagnoses. As this disease affects millions of people, we believe it's important to provide actionable advice for its prevention.. 
+      Our histogram showed us that after age 78, having a family history of Alzheimer’s and the APOE-ε4 allele were two of the most prevalent factors in Alzheimer’s predictions, so we examined these factors closely. 
+      Along with biological factors which are out of patients’ control, we also looked into the impacts of lifestyle habits or the question of “nature vs. nurture”. Factors  had a 22.82% influence on predicting a positive Alzheimer’s diagnosis (Factors like patient’s age, their genetic risk factor, or family history of Alzheimer’s).  Factors of nurture had a 77.18% influence (Factors like physical activity level, sleep quality, and social engagement level). Regarding life choices, a patient’s physical activity level, smoking status, alcohol consumption level, dietary habits, social engagement level, BMI, and education level had the greatest role in predicting a positive Alzheimer’s diagnosis with a 52.20% influence rate. 
+      
+      Our findings have shown us that age and genetics remain the clearest factors for Alzheimer’s diagnosis, but the impact of lifestyle choices should not be overlooked. In terms of body health traits, BMI, physical activity, alcohol consumption and dietary habits all predict Alzheimer’s diagnosis. Therefore it is important to monitor BMI and make healthy food choices. Activities like going outside with friends or sports are two easy ways to promote physical activity and socialization. Both are linked to lower risk. Further education can also lower your risk. We dispel the misconception that Alzheimers is caused by uncontrollable genetic factors. Risk factors mitigation can enable individuals to avoid progressive Alzheimer’s disease and/or delay it.      
       </p>
   </div>
 </div>
