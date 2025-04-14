@@ -28,13 +28,15 @@ body {
 
 h1 {
   font-size: 2.8em;
-  color: #051f39;
+  background-color: #130707;
+  color: #eeeff0;
   margin-bottom: 30px;
   text-align: center;
 }
 
 h2 {
-  color: #133150;
+  background-color: #ffffff;
+  color: #354c95;
   border-bottom: 2px solid #ccc;
   padding-bottom: 6px;
   margin-top: 40px;
